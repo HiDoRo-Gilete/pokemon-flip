@@ -1,20 +1,19 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from "@tailwindcss/vite";
-import {resolve} from "path"
+// nuxt.config.ts
+import { defineNuxtConfig } from 'nuxt/config'
+import tailwindcss from '@tailwindcss/vite'
+import { resolve } from 'path'
+
 export default defineNuxtConfig({
-  server: {
-    host: '0.0.0.0',                // allow external connections
-    port: Number(process.env.PORT)  // Render will set process.env.PORT
+  devServer: {
+    port: Number(process.env.PORT) || 3000,
   },
-  compatibilityDate: "2024-11-01",
-  alias:{
-    "assets": resolve(__dirname,"/assets"),
+  compatibilityDate: '2024-11-01',
+  alias: {
+    assets: resolve(__dirname, 'assets'),
   },
-  css: ["~/assets/main.css"],
+  css: ['~/assets/main.css'],
   devtools: { enabled: true },
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
-  },
-});
+    plugins: [tailwindcss()],
+  }
+})
